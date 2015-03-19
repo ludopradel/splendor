@@ -17,15 +17,12 @@ public class Game {
 	private Lords lords;
 	private GemStock gems;
 	
-	public Game() {
-		cards = new Cards();
-		players = new Players();
-		lords = new Lords();
-		gems = GemStock.initialise();
-	}
-
 	public Game(String... playersName) throws TooMuchPlayersException, NotEnoughPlayerException {
 		players = new Players(playersName);
+		cards = new Cards();
+		lords = new Lords();
+		gems = GemStock.initialise();
+
 	}
 
 	public Players players() {

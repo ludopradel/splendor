@@ -12,25 +12,23 @@ public class Players {
 
 	List<Player> players = new ArrayList<Player>();
 
-	public Players() {
-	}
-
 	public Players(String... playersName) throws TooMuchPlayersException, NotEnoughPlayerException {
+		if (playersName.length > 4)
+			throw new TooMuchPlayersException();
+		if (playersName.length < 2)
+			throw new NotEnoughPlayerException();
+		
 		for (String name : playersName) {
 			players.add(new Player(name));
 		}
-		if (numbers() > 4)
-			throw new TooMuchPlayersException();
-		if (numbers() < 2)
-			throw new NotEnoughPlayerException();
 	}
 
-	public Integer numbers() {
-		return players.size();
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Players))
+			return false;
+		
+		Players otherPlayers = (Players) obj;
+		return players.containsAll(otherPlayers.players);
 	}
-
-	public void add(Player player) {
-		players.add(player);
-	}
-
 }

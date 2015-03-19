@@ -1,7 +1,8 @@
 package splendor;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,16 +21,10 @@ public class GameTest {
 	Game game;
 	
 	@Before
-	public void setUp() {
-		game = new Game();
+	public void setUp() throws Exception {
+		game = new Game("Joueur 1", "Joueur 2");
 	}
 	
-	@Test
-	public void default_game_is_created_for_zero_player() {
-		Players players = game.players();
-		assertThat(players.numbers(), is(0));
-	}
-
 	@Test
 	public void game_is_created_with_four_visible_level_one_cards() throws Exception {
 		LevelOneCards levelOneCards = game.levelOneCards();
@@ -67,7 +62,9 @@ public class GameTest {
 	public void game_should_be_created_with_players() throws Exception {
 		Game game = new Game("Pierre", "Paul");
 		Players players = game.players();
-		assertThat(players.numbers(), is(2));
+		
+		Players playersExpected = new Players("Pierre", "Paul");
+		assertThat(players, equalTo(playersExpected));
 	}
 	
 }
