@@ -1,5 +1,6 @@
 package splendor;
 
+import splendor.exceptions.TooMuchPlayersException;
 import splendor.model.cards.Cards;
 import splendor.model.cards.LevelOneCards;
 import splendor.model.cards.LevelThreeCards;
@@ -20,6 +21,10 @@ public class Game {
 		players = new Players();
 		lords = new Lords();
 		gems = GemStock.initialise();
+	}
+
+	public Game(String... playersName) throws TooMuchPlayersException {
+		players = new Players(playersName);
 	}
 
 	public Players players() {

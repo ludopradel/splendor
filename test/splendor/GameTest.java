@@ -1,7 +1,7 @@
 package splendor;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,6 +61,13 @@ public class GameTest {
 	public void game_is_created_with_all_chips() throws Exception {
 		GemStock gems = game.gems();
 		assertThat(gems.count(), is(40));
+	}
+	
+	@Test
+	public void game_should_be_created_with_players() throws Exception {
+		Game game = new Game("Pierre", "Paul");
+		Players players = game.players();
+		assertThat(players.numbers(), is(2));
 	}
 	
 }
