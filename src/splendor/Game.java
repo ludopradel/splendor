@@ -8,6 +8,7 @@ import splendor.model.cards.LevelThreeCards;
 import splendor.model.cards.LevelTwoCards;
 import splendor.model.gems.GemStock;
 import splendor.model.lords.Lords;
+import splendor.model.players.Player;
 import splendor.model.players.Players;
 
 public class Game {
@@ -47,6 +48,10 @@ public class Game {
 
 	public GemStock gems() {
 		return gems;
+	}
+
+	public Player next() {
+		return players.next();
 	}
 
 }

@@ -18,6 +18,7 @@ public class Splendor {
 			System.out.println("Black  : " + gemStock.numberOf(Gem.BLACK));
 			System.out.println("White  : " + gemStock.numberOf(Gem.WHITE));
 			System.out.println("Gold   : " + gemStock.numberOf(Gem.GOLD));
+			
 		} catch (TooMuchPlayersException e) {
 			System.out.println("Trop de joueurs dans la partie");
 		} catch (NotEnoughPlayerException e) {

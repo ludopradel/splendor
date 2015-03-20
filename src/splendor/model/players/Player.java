@@ -22,8 +22,6 @@ public class Player {
 		personalStock.add(gemOne);
 		personalStock.add(gemTwo);
 		personalStock.add(gemThree);
-		
-		
 	}
 
 	public String name() {
@@ -42,5 +40,11 @@ public class Player {
 	public PlayerGems gemStock() {
 		return personalStock;
 	}
+	
+	@Override
+	public String toString() {
+		return "Player : " + name;
+	}
+
 
 }

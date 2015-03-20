@@ -11,6 +11,7 @@ import splendor.exceptions.TooMuchPlayersException;
 public class Players {
 
 	List<Player> players = new ArrayList<Player>();
+	private int currentPlayer;
 
 	public Players(String... playersName) throws TooMuchPlayersException, NotEnoughPlayerException {
 		if (playersName.length > 4)
@@ -21,6 +22,8 @@ public class Players {
 		for (String name : playersName) {
 			players.add(new Player(name));
 		}
+		
+		currentPlayer = players.size();
 	}
 
 	@Override
@@ -31,4 +34,10 @@ public class Players {
 		Players otherPlayers = (Players) obj;
 		return players.containsAll(otherPlayers.players);
 	}
+
+	public Player next() {
+		currentPlayer = currentPlayer + 1 >= players.size() ? 0 : currentPlayer + 1;
+		return players.get(currentPlayer);
+	}
+	
 }
