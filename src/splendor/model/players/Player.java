@@ -1,7 +1,7 @@
 package splendor.model.players;
 
 import splendor.model.gems.GemStock;
-import splendor.model.gems.Gems;
+import splendor.model.gems.Gem;
 
 public class Player {
 
@@ -11,7 +11,7 @@ public class Player {
 		this.name = name;
 	}
 
-	public void pickGemsFrom(GemStock gemStock, Gems gemOne, Gems gemTwo, Gems gemThree) {
+	public void pickGemsFrom(GemStock gemStock, Gem gemOne, Gem gemTwo, Gem gemThree) {
 		gemStock.pick(gemOne);
 		gemStock.pick(gemTwo);
 		gemStock.pick(gemThree);

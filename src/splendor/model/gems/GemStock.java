@@ -33,7 +33,7 @@ public class GemStock {
 		return 40;
 	}
 
-	public Integer numberOf(Gems gem) {
+	public Integer numberOf(Gem gem) {
 		switch (gem) {
 		case RED:
 			return numberOfRed;
@@ -52,7 +52,7 @@ public class GemStock {
 		}
 	}
 
-	public void pick(Gems gems) {
+	public void pick(Gem gems) {
 		switch (gems) {
 		case RED:
 			numberOfRed--;

@@ -1,6 +1,6 @@
 package splendor.model.gems;
 
-public enum Gems {
+public enum Gem {
 	GREEN,
 	RED,
 	BLUE,

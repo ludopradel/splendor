@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import splendor.model.gems.GemStock;
-import splendor.model.gems.Gems;
+import splendor.model.gems.Gem;
 
 
 public class PlayerTest {
@@ -15,10 +15,10 @@ public class PlayerTest {
 	public void when_player_picks_3_gems_then_stock_decrease() throws Exception {
 		Player player = new Player("Pierre");
 		GemStock gemStock = GemStock.initialise();
-		player.pickGemsFrom(gemStock, Gems.RED, Gems.GREEN, Gems.BLUE);
-		assertThat(gemStock.numberOf(Gems.RED), is(6));
-		assertThat(gemStock.numberOf(Gems.GREEN), is(6));
-		assertThat(gemStock.numberOf(Gems.BLUE), is(6));
+		player.pickGemsFrom(gemStock, Gem.RED, Gem.GREEN, Gem.BLUE);
+		assertThat(gemStock.numberOf(Gem.RED), is(6));
+		assertThat(gemStock.numberOf(Gem.GREEN), is(6));
+		assertThat(gemStock.numberOf(Gem.BLUE), is(6));
 	}
 	
 	@Test
