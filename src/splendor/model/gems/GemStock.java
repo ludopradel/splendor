@@ -56,16 +56,22 @@ public class GemStock {
 		switch (gems) {
 		case RED:
 			numberOfRed--;
+			break;
 		case BLUE:
 			numberOfBlue--;
+			break;
 		case BLACK:
 			numberOfBlack--;
+			break;
 		case GREEN:
 			numberOfGreen--;
+			break;
 		case WHITE:
 			numberOfWhite--;
+			break;
 		case GOLD:
 			numberOfGold--;
+			break;
 		}
 	}
 	

@@ -1,28 +1,24 @@
 package splendor.model.players;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import splendor.model.gems.Gem;
 import splendor.model.gems.GemStock;
 import splendor.model.gems.Gems;
-import splendor.model.players.Player;
 
 
 public class PlayerTest {
-	private static final Gem RED = Gem.RED;
-	private static final Gem GREEN = Gem.GREEN;
-	private static final Gem BLUE = Gem.BLUE;
-	
 
-//	@Test
-	public void a_player_could_pick_3_gems() throws Exception {
+	@Test
+	public void when_player_picks_3_gems_then_stock_decrease() throws Exception {
 		Player player = new Player("Pierre");
 		GemStock gemStock = GemStock.initialise();
-		player.pickGemsFrom(gemStock, RED, GREEN, BLUE);
+		player.pickGemsFrom(gemStock, Gems.RED, Gems.GREEN, Gems.BLUE);
 		assertThat(gemStock.numberOf(Gems.RED), is(6));
+		assertThat(gemStock.numberOf(Gems.GREEN), is(6));
+		assertThat(gemStock.numberOf(Gems.BLUE), is(6));
 	}
 	
 	@Test
