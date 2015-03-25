@@ -1,5 +1,6 @@
 package splendor.model.players;
 
+import splendor.exceptions.ColorPickedException;
 import splendor.model.gems.GemStock;
 import splendor.model.gems.Gem;
 import splendor.model.gems.PlayerGems;
@@ -14,7 +15,10 @@ public class Player {
 		personalStock = new PlayerGems();
 	}
 
-	public void pickGemsFrom(GemStock gemBank, Gem gemOne, Gem gemTwo, Gem gemThree) {
+	public void pickGemsFrom(GemStock gemBank, Gem gemOne, Gem gemTwo, Gem gemThree) throws ColorPickedException {
+		if (twoGemsHaveSameColor(gemOne, gemTwo, gemThree)) {
+			throw new ColorPickedException();
+		}
 		gemBank.pick(gemOne);
 		gemBank.pick(gemTwo);
 		gemBank.pick(gemThree);
@@ -22,6 +26,10 @@ public class Player {
 		personalStock.add(gemOne);
 		personalStock.add(gemTwo);
 		personalStock.add(gemThree);
+	}
+
+	protected boolean twoGemsHaveSameColor(Gem gemOne, Gem gemTwo, Gem gemThree) {
+		return gemOne.equals(gemTwo) || gemOne.equals(gemThree) || gemTwo.equals(gemThree);
 	}
 
 	public String name() {

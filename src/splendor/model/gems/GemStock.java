@@ -2,16 +2,16 @@ package splendor.model.gems;
 
 public class GemStock {
 
-	private int numberOfRed;
-	private int numberOfBlue;
-	private int numberOfBlack;
-	private int numberOfGreen;
-	private int numberOfWhite;
-	private int numberOfGold;
+	protected int numberOfRed;
+	protected int numberOfBlue;
+	protected int numberOfBlack;
+	protected int numberOfGreen;
+	protected int numberOfWhite;
+	protected int numberOfGold;
 	final static int INITIAL_NUMBER_OF_GEMS = 7;
 	final static int INITIAL_NUMBER_OF_BONUS_GEMS = 5;
 	
-	private GemStock() {
+	protected GemStock() {
 		numberOfRed = INITIAL_NUMBER_OF_GEMS;
 		numberOfBlue = INITIAL_NUMBER_OF_GEMS;
 		numberOfBlack = INITIAL_NUMBER_OF_GEMS;
@@ -30,7 +30,12 @@ public class GemStock {
 	}
 
 	public Integer count() {
-		return 40;
+		return numberOfBlack
+				+ numberOfBlue
+				+ numberOfGold
+				+ numberOfGreen
+				+ numberOfRed
+				+ numberOfWhite;
 	}
 
 	public Integer numberOf(Gem gem) {

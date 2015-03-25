@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import splendor.exceptions.ColorPickedException;
 import splendor.model.gems.GemStock;
 import splendor.model.gems.Gem;
 import splendor.model.gems.PlayerGems;
@@ -54,6 +55,13 @@ public class PlayerTest {
 		PlayerGems playerGems = player.gemStock();
 		
 		assertThat(playerGems, equalTo(expectedPlayerGems()));
+	}
+	
+	@Test(expected=ColorPickedException.class)
+	public void on_a_three_gems_picks_player_could_not_pick_two_times_the_same_color() throws Exception {
+		Player player = new Player("Pierre");
+		GemStock gemStock = GemStock.initialise();
+		player.pickGemsFrom(gemStock, Gem.RED, Gem.GREEN, Gem.RED);
 	}
 
 	private PlayerGems expectedPlayerGems() {
