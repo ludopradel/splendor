@@ -16,12 +16,15 @@ public class Splendor {
 			printGemStock(gemStock);
 			
 			Player pierre = game.next();
-			pierre.pickGemsFrom(gemStock, Gem.BLUE, Gem.BLACK, Gem.RED);
+			pierre.pickThreeDifferentGems(gemStock, Gem.BLUE, Gem.BLACK, Gem.RED);
 			printGemStock(pierre.gemStock());
 
 			Player paul = game.next();
-			paul.pickGemsFrom(gemStock, Gem.BLACK, Gem.GREEN, Gem.RED);
+			paul.pickThreeDifferentGems(gemStock, Gem.BLUE, Gem.BLACK, Gem.RED);
 			printGemStock(paul.gemStock());
+
+			pierre.pickThreeDifferentGems(gemStock, Gem.BLUE, Gem.BLACK, Gem.GREEN);
+			printGemStock(pierre.gemStock());
 
 			printGemStock(gemStock);
 			

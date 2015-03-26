@@ -15,10 +15,11 @@ public class Player {
 		personalStock = new PlayerGems();
 	}
 
-	public void pickGemsFrom(GemStock gemBank, Gem gemOne, Gem gemTwo, Gem gemThree) throws ColorPickedException {
+	public void pickThreeDifferentGems(GemStock gemBank, Gem gemOne, Gem gemTwo, Gem gemThree) throws ColorPickedException {
 		if (twoGemsHaveSameColor(gemOne, gemTwo, gemThree)) {
 			throw new ColorPickedException();
 		}
+		
 		gemBank.pick(gemOne);
 		gemBank.pick(gemTwo);
 		gemBank.pick(gemThree);
@@ -52,6 +53,14 @@ public class Player {
 	@Override
 	public String toString() {
 		return "Player : " + name;
+	}
+
+	public void pickTwoIdenticalGems(GemStock gemBank, Gem gem) {
+		gemBank.pick(gem);
+		gemBank.pick(gem);
+		
+		personalStock.add(gem);
+		personalStock.add(gem);
 	}
 
 
