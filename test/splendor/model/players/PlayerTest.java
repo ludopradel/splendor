@@ -25,7 +25,7 @@ public class PlayerTest {
 	public void when_player_picks_3_gems_then_stock_decrease() throws Exception {
 		Player player = new Player("Pierre");
 		GemStock gemStock = GemStock.initialise();
-		player.pickGemsFrom(gemStock, Gem.RED, Gem.GREEN, Gem.BLUE);
+		player.pickThreeDifferentGems(gemStock, Gem.RED, Gem.GREEN, Gem.BLUE);
 		assertThat(gemStock.numberOf(Gem.RED), is(6));
 		assertThat(gemStock.numberOf(Gem.GREEN), is(6));
 		assertThat(gemStock.numberOf(Gem.BLUE), is(6));
@@ -42,16 +42,30 @@ public class PlayerTest {
 	public void when_player_picks_gems_then_player_stock_is_increased() throws Exception {
 		Player player = new Player("Pierre");
 		GemStock gemStock = GemStock.initialise();
-		player.pickGemsFrom(gemStock, Gem.RED, Gem.GREEN, Gem.BLUE);
+		player.pickThreeDifferentGems(gemStock, Gem.RED, Gem.GREEN, Gem.BLUE);
 		PlayerGems playerGems = player.gemStock();
 		assertThat(playerGems.isEmpty(), is(false));
+	}
+	
+	@Test
+	public void when_player_picks_two_identical_gems_then_his_stock_contains_gems_picked() throws Exception {
+		Player player = new Player("Pierre");
+		GemStock gemStock = GemStock.initialise();
+		player.pickTwoIdenticalGems(gemStock, Gem.RED);
+		PlayerGems playerGems = player.gemStock();
+		
+		PlayerGems expectedPlayerGems = new PlayerGems();
+		expectedPlayerGems.add(Gem.RED);
+		expectedPlayerGems.add(Gem.RED);
+		
+		assertThat(playerGems, equalTo(expectedPlayerGems));
 	}
 	
 	@Test
 	public void when_player_picks_gems_then_his_stock_contains_gems_picked() throws Exception {
 		Player player = new Player("Pierre");
 		GemStock gemStock = GemStock.initialise();
-		player.pickGemsFrom(gemStock, Gem.RED, Gem.GREEN, Gem.BLUE);
+		player.pickThreeDifferentGems(gemStock, Gem.RED, Gem.GREEN, Gem.BLUE);
 		PlayerGems playerGems = player.gemStock();
 		
 		assertThat(playerGems, equalTo(expectedPlayerGems()));
@@ -61,7 +75,7 @@ public class PlayerTest {
 	public void on_a_three_gems_picks_player_could_not_pick_two_times_the_same_color() throws Exception {
 		Player player = new Player("Pierre");
 		GemStock gemStock = GemStock.initialise();
-		player.pickGemsFrom(gemStock, Gem.RED, Gem.GREEN, Gem.RED);
+		player.pickThreeDifferentGems(gemStock, Gem.RED, Gem.GREEN, Gem.RED);
 	}
 
 	private PlayerGems expectedPlayerGems() {
