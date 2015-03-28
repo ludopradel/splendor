@@ -1,18 +1,21 @@
 package splendor.model.players;
 
 import splendor.exceptions.ColorPickedException;
-import splendor.model.gems.GemStock;
+import splendor.model.cards.Cards;
 import splendor.model.gems.Gem;
+import splendor.model.gems.GemStock;
 import splendor.model.gems.PlayerGems;
 
 public class Player {
 
 	private String name;
 	private PlayerGems personalStock;
+	private PlayerHand hand;
 
 	public Player(String name) {
 		this.name = name;
 		personalStock = new PlayerGems();
+		hand = new PlayerHand();
 	}
 
 	public void pickThreeDifferentGems(GemStock gemBank, Gem gemOne, Gem gemTwo, Gem gemThree) throws ColorPickedException {
@@ -63,5 +66,11 @@ public class Player {
 		personalStock.add(gem);
 	}
 
+	public void pickCard(Cards a_card) {
+		hand.add(a_card);
+	}
 
+	public PlayerHand cardsInHand() {
+		return hand;
+	}
 }

@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import splendor.exceptions.ColorPickedException;
+import splendor.model.cards.LevelOneCards;
 import splendor.model.gems.GemStock;
 import splendor.model.gems.Gem;
 import splendor.model.gems.PlayerGems;
@@ -74,6 +75,17 @@ public class PlayerTest {
 		player.pickThreeDifferentGems(gemStock, Gem.RED, Gem.GREEN, Gem.RED);
 	}
 
+	@Test
+	public void player_could_pick_a_card_in_his_hand() throws Exception {
+		Player player = new Player("Pierre");
+		LevelOneCards a_card = new LevelOneCards();
+		player.pickCard(a_card);
+		PlayerHand expectedHand = new PlayerHand();
+		expectedHand.add(a_card);
+		assertThat(player.cardsInHand(), is(expectedHand));
+	}
+	
+	
 	private PlayerGems expectedPlayerGems() {
 		PlayerGems expectedPlayerGems = new PlayerGems();
 		expectedPlayerGems.add(Gem.RED);
